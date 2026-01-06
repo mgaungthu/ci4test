@@ -20,7 +20,7 @@ The page includes a responsive navigation menu, hero section, call-to-action are
 - **Bootstrap 5**  
   Used mainly for:
   - Grid system
-  - Responsive layout
+  - Responsive Menu
   - Cross-device compatibility  
   Bootstrap components are kept minimal to reduce overhead.
 
