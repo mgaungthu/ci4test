@@ -37,80 +37,115 @@ The page includes a responsive navigation menu, hero section, call-to-action are
 
 ---
 
-## ⚙️ Setup Instructions
+## ⚙️ Setup Instructions (CodeIgniter 4)
 
-Follow the steps below to set up and run the project locally.
+Follow the steps below to set up and run the **CodeIgniter 4** project locally.
+
+---
 
 ### 1️⃣ Clone the Repository
 ```bash
 git clone <repository-url>
-cd project-folder
+cd ci4test
 ```
-
-### 2️⃣ Project Structure Overview
-This project is a **static front-end project**.  
-There is no build process, package manager, or server-side dependency required.
-
-Key folders:
-- `assets/css` – Stylesheets (utility styles, custom styles, responsive styles)
-- `assets/js` – JavaScript files (menu toggle only)
-- `assets/images` – Images and SVG assets
-- `index.html` – Main entry file
 
 ---
 
-### 3️⃣ Run the Project Locally
+### 2️⃣ Server Requirements
+Make sure your local environment meets the following requirements:
 
-You can run the project in two ways:
+- PHP **8.1 or higher**
+- Composer
+- Web server (Apache / Nginx) or PHP built-in server
+- Enabled PHP extensions:
+  - intl
+  - mbstring
+  - json
+  - curl
+  - openssl
 
-#### Option A: Using a Local Server (Recommended)
-Using a local server is recommended to ensure fonts, caching, and performance behave correctly.
-
+You can check PHP version with:
 ```bash
-npx serve
+php -v
 ```
 
-or
+---
+
+### 3️⃣ Install Dependencies
+CodeIgniter 4 uses Composer to manage dependencies.
 
 ```bash
-php -S localhost:8080
+composer install
 ```
 
-Then open the browser at:
+This will generate the `vendor/` directory required to run the framework.
+
+---
+
+### 4️⃣ Environment Configuration
+Create the environment configuration file:
+
+```bash
+cp env .env
+```
+
+Open `.env` and update the following values if needed:
+
+```env
+CI_ENVIRONMENT = development
+app.baseURL = 'http://localhost:8080/'
+```
+
+> ⚠️ Do not commit `.env` to Git. Use `.env.example` for sharing configuration.
+
+---
+
+### 5️⃣ Folder Permissions
+Ensure the `writable/` directory is writable:
+
+```bash
+chmod -R 775 writable
+```
+
+(This step is required for logs, cache, and session files.)
+
+---
+
+### 6️⃣ Run the Application
+
+#### Option A: Using CodeIgniter Built-in Server (Recommended)
+```bash
+php spark serve
+```
+
+The application will be available at:
 ```
 http://localhost:8080
 ```
 
-#### Option B: Open HTML File Directly
-You can also open the main HTML file directly in your browser:
-
-- Double-click `index.html`
-- Or right-click → Open with browser
-
-> ⚠️ Note: Some features such as font loading, caching behavior, and performance testing work best when using a local server.
+#### Option B: Using PHP Built-in Server
+```bash
+php -S localhost:8080 -t public
+```
 
 ---
 
-### 4️⃣ Customization
+### 7️⃣ Project Structure Overview
+Key folders in this CodeIgniter 4 project:
 
-- Update styles in `mystyle.css` for branding and layout changes
-- Use utility classes from `util.css` for spacing and alignment
-- Responsive adjustments are handled in `responsive.css`
-- JavaScript logic for menu interaction is located in `assets/js`
-
----
-
-### 5️⃣ Browser Support
-
-The project is tested and works on modern browsers:
-- Chrome
-- Firefox
-- Edge
-- Safari
+- `app/Controllers` – Application controllers
+- `app/Views` – View files (landing page, layout, partials)
+- `app/Config` – Configuration files
+- `public/` – Public web root (CSS, JS, images)
+- `writable/` – Cache, logs, sessions (must be writable)
+- `vendor/` – Composer dependencies
 
 ---
 
-### 6️⃣ Notes
+### 8️⃣ Notes
 
-This project is intended for demonstration and evaluation purposes as part of a test challenge.  
-The structure is intentionally kept simple for clarity, performance, and ease of review.
+- The web server document root must point to the `public/` directory.
+- This project is configured for **development mode** by default.
+- For production, set `CI_ENVIRONMENT = production` in `.env`.
+
+This project is created for demonstration and evaluation purposes as part of a test challenge.
