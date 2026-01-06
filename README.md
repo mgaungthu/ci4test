@@ -7,6 +7,22 @@ The goal of the project is to demonstrate clean front-end structure, responsive 
 
 The page includes a responsive navigation menu, hero section, call-to-action areas, and content sections that work consistently across desktop, tablet, and mobile devices.
 
+### 🔧 Implementation Details
+
+- The original HTML landing page has been **integrated into the CodeIgniter 4 framework** by converting it into CI4 view files.
+- Layouts and partials are organized under `app/Views` to keep the structure clean and maintainable.
+- Static assets such as CSS, JavaScript, images, and fonts are served from the `public/` directory following CodeIgniter best practices.
+
+#### Data Handling (`data.json`)
+- A lightweight `data.json` file is used to store sample content and configuration data.
+- This JSON file is **read in the controller**, decoded, and **passed to the view** to render dynamic content.
+- This approach demonstrates how static data can be managed and injected into views without a database, which is suitable for landing pages and test challenges.
+
+Example flow:
+- `data.json` → Controller (decode JSON)
+- Controller → View (pass data array)
+- View → Render dynamic content
+
 ---
 
 ## 🛠 Technologies Used
